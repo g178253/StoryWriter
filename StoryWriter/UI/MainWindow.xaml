@@ -3,10 +3,52 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:StoryWriter"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
         
+        <!-- 菜单 -->
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="3">
+            <Menu>
+                <MenuItem Header="文件">
+                    <MenuItem Header="保存"/>
+                </MenuItem>
+            </Menu>
+            <ToolBarTray Background="LightGray">
+                <ToolBarTray.Resources>
+                    <Style TargetType="Image">
+                        <Setter Property="MaxHeight" Value="25"/>
+                    </Style>
+                </ToolBarTray.Resources>
+                <ToolBar Band="1" BandIndex="1" Background="Black">
+                    <Button>
+                        <Image Source="Images/保存.png"/>
+                    </Button>
+                </ToolBar>
+            </ToolBarTray>
+        </StackPanel>
+
+        <!-- 内容-目标 -->
+        
+        <!-- 内容-视区 -->
+        
+        <!-- 内容-侧边栏 -->
+
+        <!-- 状态 -->
+        <StatusBar Grid.Row="2" Grid.ColumnSpan="3">
+            <StatusBarItem>
+                <TextBlock Text="字数"/>
+            </StatusBarItem>
+        </StatusBar>
     </Grid>
 </Window>
