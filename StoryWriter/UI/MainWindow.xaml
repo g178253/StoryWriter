@@ -3,8 +3,20 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:core="clr-namespace:StoryWriter.Core"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+
+    <Window.Resources>
+        <HierarchicalDataTemplate DataType="{x:Type core:Container}"
+                                  ItemsSource="{Binding Children}">
+            <TextBlock Text="{Binding Key}"/>
+        </HierarchicalDataTemplate>
+        <HierarchicalDataTemplate DataType="{x:Type core:Element}">
+            <TextBlock Text="{Binding Key}"/>
+        </HierarchicalDataTemplate>
+    </Window.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -38,11 +50,16 @@
             </ToolBarTray>
         </StackPanel>
 
-        <!-- 内容-目标 -->
-        
+        <!-- 内容-目录 -->
+        <TreeView Grid.Row="1" Grid.Column="0" MinWidth="200"/>
+
         <!-- 内容-视区 -->
-        
+        <ListBox Grid.Row="1" Grid.Column="1"/>
+
         <!-- 内容-侧边栏 -->
+        <StackPanel Grid.Row="1" Grid.Column="2" MinWidth="200">
+            
+        </StackPanel>
 
         <!-- 状态 -->
         <StatusBar Grid.Row="2" Grid.ColumnSpan="3">
