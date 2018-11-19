@@ -19,10 +19,10 @@
         /// <summary>
         /// 获取元素的键。
         /// </summary>
-        public override string Key { get => string.Empty; }
+        public override dynamic Key { get => string.Empty; }
         /// <summary>
         /// 获取元素的值。
         /// </summary>
-        public override string Value { get => string.Empty; }
+        public override dynamic Value { get => string.Empty; }
     }
 }

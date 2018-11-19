@@ -1,6 +1,7 @@
 ﻿using System;
 using Xunit;
 using StoryWriter.Core;
+using System.Collections.Generic;
 
 namespace test
 {
@@ -18,7 +19,8 @@ namespace test
         {
             var c = Get();
             c.Add(Null.Instance);
-            Assert.Single(c.Children);
+            var children = c.Value as ICollection<Element>;
+            Assert.Single(children);
         }
 
         [Fact]
@@ -38,7 +40,8 @@ namespace test
             c.Add(Null.Instance);
 
             c.Remove(-1);
-            Assert.Empty(c.Children);
+            var children = c.Value as ICollection<Element>;
+            Assert.Empty(children);
         }
 
         [Fact]

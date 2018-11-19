@@ -9,14 +9,18 @@ namespace StoryWriter.Core
     public sealed class Container : Element
     {
         /// <summary>
+        /// 获取子元素的集合。
+        /// </summary>
+        private readonly ICollection<Element> m_Children = new List<Element>();
+
+        /// <summary>
+        /// 获取元素的值。
+        /// </summary>
+        public override dynamic Value { get => m_Children; }
+        /// <summary>
         /// 获取或设置容器的子元素。
         /// </summary>
         public Element Child { get; set; } = Null.Instance;
-
-        /// <summary>
-        /// 获取子元素的集合。
-        /// </summary>
-        public ICollection<Element> Children { get; } = new List<Element>();
 
         /// <summary>
         /// 添加元素。
@@ -27,7 +31,7 @@ namespace StoryWriter.Core
             if (element != null)
             {
                 Child = element;
-                Children.Add(element);
+                m_Children.Add(element);
             }
         }
 
@@ -37,11 +41,11 @@ namespace StoryWriter.Core
         /// <param name="id">要移除的元素的编号。</param>
         public void Remove(int id)
         {
-            var i = Children.FirstOrDefault(o => o.Id == id);
+            var i = m_Children.FirstOrDefault(o => o.Id == id);
             if (i != null)
             {
                 Child = Null.Instance;
-                Children.Remove(i);
+                m_Children.Remove(i);
             }
         }
     }

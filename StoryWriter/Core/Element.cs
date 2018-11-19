@@ -12,10 +12,10 @@
         /// <summary>
         /// 获取或设置元素的键。
         /// </summary>
-        public virtual string Key { get; set; }
+        public virtual dynamic Key { get; set; }
         /// <summary>
         /// 获取或设置元素的值。
         /// </summary>
-        public virtual string Value { get; set; }
+        public virtual dynamic Value { get; set; }
     }
 }
