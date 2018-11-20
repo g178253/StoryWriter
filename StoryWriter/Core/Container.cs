@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
 
 namespace StoryWriter.Core
@@ -11,7 +11,18 @@ namespace StoryWriter.Core
         /// <summary>
         /// 获取子元素的集合。
         /// </summary>
-        private readonly ICollection<Element> m_Children = new List<Element>();
+        private readonly ObservableCollection<Element> m_Children = new ObservableCollection<Element>();
+
+        /// <summary>
+        /// 获取默认的容器。
+        /// </summary>
+        /// <param name="key">容器的名称。</param>
+        /// <returns>默认的容器。</returns>
+        public static Container Default(string key)
+        {
+            var c = new Container { Key = key };
+            return c;
+        }
 
         /// <summary>
         /// 获取元素的值。
@@ -20,7 +31,7 @@ namespace StoryWriter.Core
         /// <summary>
         /// 获取或设置容器的子元素。
         /// </summary>
-        public Element Child { get; set; } = Null.Instance;
+        public Element Child { get; set; }
 
         /// <summary>
         /// 添加元素。

@@ -61,7 +61,9 @@
     </Page>
     <Compile Include="Core\Container.cs" />
     <Compile Include="Core\Element.cs" />
+    <Compile Include="Core\NotifyBase.cs" />
     <Compile Include="Core\Null.cs" />
+    <Compile Include="Core\TableOfContent.cs" />
     <Compile Include="UI\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>

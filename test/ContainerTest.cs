@@ -11,7 +11,7 @@ namespace test
         public void Child_Default_Null()
         {
             var c = Get();
-            Assert.Equal(Null.Instance, c.Child);
+            Assert.Null(c.Child);
         }
 
         [Fact]

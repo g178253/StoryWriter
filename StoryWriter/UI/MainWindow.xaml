@@ -9,7 +9,7 @@
 
     <Window.Resources>
         <HierarchicalDataTemplate DataType="{x:Type core:Container}"
-                                  ItemsSource="{Binding Children}">
+                                  ItemsSource="{Binding Value}">
             <TextBlock Text="{Binding Key}"/>
         </HierarchicalDataTemplate>
         <HierarchicalDataTemplate DataType="{x:Type core:Element}">
@@ -42,16 +42,18 @@
                         <Setter Property="MaxHeight" Value="25"/>
                     </Style>
                 </ToolBarTray.Resources>
-                <ToolBar Band="1" BandIndex="1" Background="Black">
-                    <Button>
-                        <Image Source="Images/保存.png"/>
-                    </Button>
+                <ToolBar Band="1" BandIndex="1">
+                    <Button Content="保存"/>
+                    <Button Content="添加目录" Click="AddContainer_Click"/>
+                    <Button Content="添加章节" Click="AddElement_Click"/>
                 </ToolBar>
             </ToolBarTray>
         </StackPanel>
 
         <!-- 内容-目录 -->
-        <TreeView Grid.Row="1" Grid.Column="0" MinWidth="200"/>
+        <TreeView x:Name="TableOfContents"
+                  Grid.Row="1" Grid.Column="0" MinWidth="150"
+                  TreeViewItem.Selected="TableOfContents_Selected"/>
 
         <!-- 内容-视区 -->
         <ListBox Grid.Row="1" Grid.Column="1"/>
