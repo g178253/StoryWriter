@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace StoryWriter.UI
 {
@@ -41,24 +29,6 @@ namespace StoryWriter.UI
             m_table.Item = GetElement<Core.Element>(e.OriginalSource);
         }
 
-        // 添加目录。
-        private void AddContainer_Click(object sender, RoutedEventArgs e)
-        {
-            if (!(m_table.Item is Core.Container c))
-                c = GetElement<Core.Container>(e.OriginalSource);
-
-            c.Add(new Core.Container { Key = "第1卷" });
-        }
-
-        // 添加章节。
-        private void AddElement_Click(object sender, RoutedEventArgs e)
-        {
-            if (!(m_table.Item is Core.Container c))
-                c = GetElement<Core.Container>(e.OriginalSource);
-
-            c.Add(new Core.Element { Key = "第1章" });
-        }
-
         /// <summary>
         /// 从指定对象中，获取目录元素。
         /// </summary>
@@ -72,6 +42,29 @@ namespace StoryWriter.UI
                 || !(tv.DataContext is T elem))
                 return default(T);
             return elem;
+        }
+
+        // 添加目录。
+        private void AddContainer_Click(object sender, RoutedEventArgs e)
+        {
+            AddElement(m_table.Item, new Core.Container { Key = "第1卷" });
+        }
+
+        // 添加章节。
+        private void AddElement_Click(object sender, RoutedEventArgs e)
+        {
+            AddElement(m_table.Item, new Core.Element { Key = "第1章" });
+        }
+
+        /// <summary>
+        /// 添加新目录。
+        /// </summary>
+        /// <param name="selectedItem">选中的目录。</param>
+        /// <param name="toAdd">要添加的目录。</param>
+        private void AddElement(Core.Element selectedItem, Core.Element toAdd)
+        {
+            if (selectedItem is Core.Container c)
+                c.Add(toAdd);
         }
 
         #endregion
